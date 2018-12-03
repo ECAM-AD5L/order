@@ -1,8 +1,9 @@
 package schema
 
 import (
-	"github.com/mongodb/mongo-go-driver/bson/objectid"
 	"time"
+
+	"github.com/mongodb/mongo-go-driver/bson/objectid"
 )
 
 type Status string
@@ -25,5 +26,7 @@ type Order struct {
 }
 
 type OrderItem struct {
-	Name string `json:"name" bson:"name"`
+	Name     string `json:"name" bson:"name"`
+	Price    int64  `json:"price" bson:"price"`
+	Quantity int    `json:"quantity" bson:"quantity"`
 }
