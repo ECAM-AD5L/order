@@ -3,10 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 	"order/db"
 	"order/service"
-	"os"
+
 	//"order/event"
 )
 
@@ -28,11 +27,7 @@ func main() {
 			panic(err)
 		}
 		event.SetEventStore(es)*/
-	fmt.Println("Initializing the router...")
-	router := service.NewRouter()
-
-	if err := http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv("PORT")), router); err != nil {
-		log.Fatal(err)
-	}
+	fmt.Println("Initializing the server...")
+	service.StartAPIServer()
 	fmt.Println("Server running...")
 }

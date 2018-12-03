@@ -15,6 +15,7 @@ services:
         links:
             - mongo
         environment:
+            DEBUG: "true"
             PORT: '8080'
             DB_NAME: 'ecam'
-            MONGO_URL: 'mongodb://mongo:27017'
+            MONGO_URL: 'mongodb://mongo:27017/ecam'
