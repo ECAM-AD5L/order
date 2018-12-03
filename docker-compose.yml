@@ -17,4 +17,4 @@ services:
         environment:
             PORT: '8080'
             DB_NAME: 'ecam'
-            DB_HOST: 'mongo:27017'
+            MONGO_URL: 'mongodb://mongo:27017'

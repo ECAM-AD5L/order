@@ -5,7 +5,6 @@ import (
 	"github.com/mongodb/mongo-go-driver/mongo"
 	"order/schema"
 	"order/util"
-	"os"
 )
 
 const ORDERCOLLECTION = "orders"
@@ -20,7 +19,7 @@ func NewMongo() (*OrderRepository, error) {
 		return nil, err
 	}
 	client.Connect(context.Background())
-	db := client.Database(os.Getenv("DB_NAME"))
+	db := client.Database("order-database")
 	return &OrderRepository{
 		db,
 	}, nil

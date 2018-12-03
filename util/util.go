@@ -31,6 +31,6 @@ func GetDBConnection() (*mongo.Client, error) {
 }
 
 func connectionString() string {
-	host := os.Getenv("DB_HOST")
-	return fmt.Sprintf("mongodb://%s", host)
+	host := os.Getenv("MONGO_URL")
+	return fmt.Sprintf("%s", host)
 }
