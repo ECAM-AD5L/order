@@ -2,7 +2,6 @@ package schema
 
 import (
 	"time"
-
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
 )
 
