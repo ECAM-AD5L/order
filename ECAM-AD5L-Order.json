@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "a2fc4cee-15ec-4d36-a84a-af86ff9b6096",
+		"name": "ECAM-AD5L-Order",
+		"description": "Order API for the AD5L project.\nMade by Julien Kessels and Saikou Barry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "Get all the orders from the database."
+			},
+			"response": []
+		},
+		{
+			"name": "A order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/orders/{{order_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders",
+						"{{order_id}}"
+					]
+				},
+				"description": "Get a orders from the database."
+			},
+			"response": [
+				{
+					"name": "A order",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/orders/5c0e5f17f69f300928bb675d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"5c0e5f17f69f300928bb675d"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"5c0e5f17f69f300928bb675d\",\n        \"created_at\": \"0001-01-01T00:00:00Z\",\n        \"card_id\": \"\",\n        \"customer_id\": \"\",\n        \"status\": \"\",\n        \"price\": 0,\n        \"customer\": {\n            \"email\": \"\",\n            \"first_name\": \"\",\n            \"last_name\": \"\"\n        },\n        \"shipping_address\": {\n            \"name\": \"\",\n            \"street\": \"\",\n            \"city\": \"\",\n            \"country\": \"\",\n            \"zip_code\": \"\"\n        },\n        \"billing_address\": {\n            \"name\": \"\",\n            \"street\": \"\",\n            \"city\": \"\",\n            \"country\": \"\",\n            \"zip_code\": \"\"\n        },\n        \"order_items\": [\n            {\n                \"name\": \"testitem2\",\n                \"price\": 69,\n                \"quantity\": 5\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "A order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"order_items\": [\n        {\n            \"name\": \"item-name\",\n            \"price\": 69,\n            \"quantity\": 5\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "Save a new order to the database."
+			},
+			"response": [
+				{
+					"name": "A order",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order_items\": [\n        {\n            \"name\": \"item-name\",\n            \"price\": 69,\n            \"quantity\": 5\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "My orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/orders/me/{{user_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders",
+						"me",
+						"{{user_id}}"
+					]
+				},
+				"description": "Get all the orders for a given user."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "82983420-21d9-435d-9896-042d84bbd8b6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3b499960-ffac-4d8c-ae33-ab66735cb6ee",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2e89d9d2-6ca2-4c99-b82b-b89082a03618",
+			"key": "token",
+			"value": null,
+			"type": "any"
+		},
+		{
+			"id": "153c39dd-b97f-4f51-8c25-47fa3ddc9b10",
+			"key": "order_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "468fa5b1-81f6-43b3-9265-e15f9d03997e",
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
