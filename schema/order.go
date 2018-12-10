@@ -3,14 +3,14 @@ package schema
 import (
 	"time"
 
-	"github.com/mongodb/mongo-go-driver/bson/objectid"
+	"github.com/mongodb/mongo-go-driver/bson/primitive"
 )
 
 type Status string
 
 type Order struct {
-	ID        objectid.ObjectID `json:"id" bson:"_id,omitempty"`
-	CreatedAt time.Time         `json:"created_at" bson:"created_at"`
+	ID        primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	CreatedAt time.Time          `json:"created_at" bson:"created_at"`
 
 	CartID     string `json:"card_id" bson:"card_id"`
 	CustomerID string `json:"customer_id" bson:"customer_id"`
