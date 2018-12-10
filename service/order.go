@@ -42,6 +42,25 @@ func getOrder(w http.ResponseWriter, r *http.Request) {
 
 func getOrders(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+
+	obj, err := db.GetOrders(r.Context())
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(obj)
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("{\"function\": \"getOrders\"}"))
+	json.NewEncoder(w).Encode(obj)
+}
+
+func ListOrderByCustomerID(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	id := mux.Vars(r)["id"]
+
+	obj, err := db.ListOrderByCustomerID(r.Context(), id)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(obj, id)
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(obj)
 }
