@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"fmt"
 	"order/schema"
 	"order/util"
 
@@ -87,4 +88,30 @@ func (r *OrderRepository) GetOrders(ctx context.Context) ([]*schema.Order, error
 		orders = append(orders, &order)
 	}
 	return orders, nil
+}
+
+func (r *OrderRepository) UserHasItem(ctx context.Context, userId string, itemId string) (*bool, error) {
+	z := new(bool)
+	query := fmt.Sprintf(`{
+		{$match: {"customer_id": %s}},
+		{$addFields : {"orders":{$filter:{
+			input: "$orders",
+			as: "order",
+			cond: {$eq: ["$$order.ID", %s]}
+		}}}}}`, userId, itemId)
+
+	var group interface{}
+	err := bson.UnmarshalExtJSON([]byte(query), true, group)
+	if err != nil {
+		*z = false
+		return z, err
+	}
+	_, err = r.Conn.Collection(ORDERCOLLECTION).Aggregate(ctx, group)
+	if err != nil {
+		*z = false
+		return z, err
+	}
+
+	*z = false
+	return z, nil
 }
