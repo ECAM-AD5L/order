@@ -15,6 +15,7 @@ func NewRouter() (router *mux.Router) {
 	router.HandleFunc("/orders", getOrders).Methods("GET")
 	router.HandleFunc("/orders/{id}", getOrder).Methods("GET")
 	router.HandleFunc("/orders/me/{id}", ListOrderByCustomerID).Methods("GET")
+	router.HandleFunc("/orders/{user_id}/{item_id}", UserHasItem).Methods("GET")
 
 	debug, err := strconv.ParseBool(os.Getenv("DEBUG"))
 	if err != nil {

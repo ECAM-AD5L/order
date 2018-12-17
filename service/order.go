@@ -61,3 +61,17 @@ func ListOrderByCustomerID(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(obj)
 }
+
+func UserHasItem(w http.ResponseWriter, r *http.Request) {
+	userId := mux.Vars(r)["user_id"]
+	itemId := mux.Vars(r)["item_id"]
+
+	obj, err := db.UserHasItem(r.Context(), userId, itemId)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(obj)
+}

@@ -16,6 +16,8 @@ type Repository interface {
 
 	//OK
 	GetOrders(ctx context.Context) ([]*schema.Order, error)
+
+	UserHasItem(ctx context.Context, userId string, itemId string) (*bool, error)
 }
 
 var impl Repository
@@ -38,4 +40,8 @@ func GetOrder(ctx context.Context, id string) (*schema.Order, error) {
 
 func GetOrders(ctx context.Context) ([]*schema.Order, error) {
 	return impl.GetOrders(ctx)
+}
+
+func UserHasItem(ctx context.Context, userId string, itemId string) (*bool, error) {
+	return impl.UserHasItem(ctx, userId, itemId)
 }
