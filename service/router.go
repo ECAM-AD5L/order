@@ -11,10 +11,10 @@ import (
 
 func NewRouter() (router *mux.Router) {
 	router = mux.NewRouter()
-	router.HandleFunc("/orders", createOrder).Methods("POST")
-	router.HandleFunc("/orders", getOrders).Methods("GET")
-	router.HandleFunc("/orders/{id}", getOrder).Methods("GET")
-	router.HandleFunc("/orders/me/{id}", ListOrderByCustomerID).Methods("GET")
+	router.HandleFunc("/orders", JWTMiddleware(createOrder)).Methods("POST")
+	router.HandleFunc("/orders", JWTMiddleware(getOrders)).Methods("GET")
+	router.HandleFunc("/orders/{id}", JWTMiddleware(getOrder)).Methods("GET")
+	router.HandleFunc("/orders/me/{id}", JWTMiddleware(ListOrderByCustomerID)).Methods("GET")
 
 	debug, err := strconv.ParseBool(os.Getenv("DEBUG"))
 	if err != nil {

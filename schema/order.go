@@ -26,6 +26,7 @@ type Order struct {
 }
 
 type OrderItem struct {
+	ID       string `json:"id" bson:"id"`
 	Name     string `json:"name" bson:"name"`
 	Price    int64  `json:"price" bson:"price"`
 	Quantity int    `json:"quantity" bson:"quantity"`
